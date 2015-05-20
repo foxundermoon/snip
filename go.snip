@@ -128,6 +128,7 @@ snippet ft
 	fallthrough
 # float
 snippet fl
+alias float
 	float32
 # float32
 snippet f3
@@ -146,13 +147,15 @@ options head
 	}
 	${0}
 # for loop
+
 snippet fo
 abbr for i := 0; ..<..;..++ {...}
 options head
-	for ${2:i} := 0; $2 < ${1:count}; $2${3:++} {
+	for ${1:i} := 0; $1 < ${2:count}; $1${3:++} {
 		${4}
 	}
 	${0}
+
 # for range loop
 snippet fr
 abbr for k,v := range ... {...}
@@ -163,7 +166,7 @@ options head
 	${0}
 # function simple
 snippet fun
-abbr func ${1:funcName}(${2})${3:error} {...}
+abbr func funcName(args...)(return...) {...}
 options head
 	func ${1:funcName}(${2}) ${3:error} {
 		${4}
@@ -179,13 +182,19 @@ snippet fum
 snippet lf
 	log.Printf("%${1:s}", ${2:var})
 # log printf
-snippet lp
+snippet lps
 	log.Println("${1}")
+snippet lp
+	log.Println(${1})
 #fmt.Println(...)
-snippet     pl
+snippet     pls
 abbr        fmt.Println(...)
 options     head
     fmt.Println("${1}")
+snippet     pl
+abbr        fmt.Println(...)
+options     head
+    fmt.Println(${1})
 # make
 snippet mk
 	make(${1:[]string}, ${0:0})
